@@ -18,5 +18,26 @@ public class Main {
             System.out.println(book.getAuthors());
         }
 
+        Library library = new Library(bookOne, bookTwo, bookThree);
+
+        for (Book book : library) {
+            System.out.println(book.getTitle());
+        }
+
+        if (bookOne.compareTo(bookTwo) > 0) {
+            System.out.println(String.format("%s is before %s", bookOne, bookTwo));
+        } else if (bookOne.compareTo(bookTwo) < 0) {
+            System.out.println(String.format("%s is before %s", bookTwo, bookOne));
+        } else {
+            System.out.println("Book are equal");
+        }
+
+        books.sort(new BookComparator());
+
+
+
+        for (Book book : books) {
+            System.out.println(book.getTitle() + book.getYear());
+        }
     }
 }

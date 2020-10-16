@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Book {
+public class Book implements Comparable<Book> {
 
     private String title;
     private int year;
@@ -34,12 +34,27 @@ public class Book {
         return this.authors;
     }
 
+
     private void setAuthors(String... authors) {
         if (authors.length == 0) {
             this.authors = new ArrayList<>();
-        }else {
+        } else {
             this.authors = Arrays.asList(authors.clone());
-            }
         }
+    }
 
+    @Override
+    public int compareTo(Book other) {
+        if (this.getTitle().compareTo(other.getTitle()) == 0) {
+            if (this.getYear() > other.getYear()) {
+                return 1;
+            } else if (this.getYear() < other.getYear()) {
+                return -1;
+            }
+            return 0;
+        } else {
+            return this.getTitle().compareTo(other.getTitle());
+
+        }
+    }
 }
