@@ -2,30 +2,42 @@ package CustomStack;
 
 import java.util.Iterator;
 
-public class CustomStack implements Iterable<CustomStack> {
+public class CustomStack implements Iterable<String> {
 
     private Node head;
     private int size;
 
     @Override
-    public Iterator<CustomStack> iterator() {
-        return new Iterator<CustomStack>() {
+    public Iterator<String> iterator() {
+        return new iter();
+    }
+
+    private final class iter implements Iterator<String> {
+        Node iHead;
+        int iSize;
+
+        public iter() {
+            iHead = head;
+            iSize = size;
+        }
 
             @Override
             public boolean hasNext() {
-                if (size > 0) {
+                if (iSize > 0) {
                     return true;
                 }
                 return false;
             }
 
             @Override
-            public CustomStack next() {
-                return null;
+            public String next() {
+            String forReturn = iHead.element;
+            iHead = iHead.prev;
+            iSize --;
+
+                return forReturn;
             }
         };
-    }
-
 
     private static class Node {
         private String element;
