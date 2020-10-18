@@ -1,8 +1,5 @@
 package Sort;
 
-import Sort.CompareByAge;
-import Sort.CompareByName;
-
 import java.util.*;
 
 public class Main {

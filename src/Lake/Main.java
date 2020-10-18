@@ -11,11 +11,14 @@ public class Main {
 
         String input = scanner.nextLine();
         Lake stones = null;
+        int count = 0;
 
         while (!"END".equals(input)){
             int[] numbersOfLake = Arrays.stream(input.split(", "))
                     .mapToInt(Integer::parseInt)
                     .toArray();
+
+            count = numbersOfLake.length;
 
             stones = new Lake(numbersOfLake);
 
@@ -23,7 +26,12 @@ public class Main {
         }
 
         for (int stones1 : stones) {
-            System.out.print(stones1 + " ");
+            if (count > 1) {
+                System.out.print(stones1 + ", ");
+                count --;
+            }else {
+                System.out.println(stones1);
+            }
         }
 
     }
